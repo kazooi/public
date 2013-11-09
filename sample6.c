@@ -6,7 +6,7 @@ int pie[20][3];
 int sp[3],N;
 
 
-
+/*
 // テスト
 void move(int n,int s,int d)
 {
@@ -54,64 +54,65 @@ void main(void)
 
   hanoi(N,0,1,2);
 }
-
+*/
 
 //////////////////////////////////////////////////////////////////////
 
-/*id init(){
+void init(){
 	int i;
 	for(i = 0; i < SIZE; i++){
-		tree1[i] = 0;
+		tree1[i] = i + 1;
 		tree2[i] = 0;
 		tree3[i] = 0;
 	}
 }
 
-// 指定した数のタワーを作る
-void h(int* s){
-
-	if(*s == 0){
-		return;	
-	}
-	else{
-		//printf("%d", *s);
-		tree1[*s] = *s;
-	}
-	
-	*s = *s -1;
-	h(s);
-	
-}
-
 // タワーの移動
-void sort(int one[], int two[], int tree[]){
+void move(int n, int it[],int go[]){
+	int i,j;
 	
-	
+	for(i = 0; i < SIZE; i++){
+		tree1[i] = 0;
+		tree3[i] = i + 1;	
+	}
 }
+
+void hanoi(int n, int one[], int two[], int three[]){
+	if(n < 1) return;
+	hanoi(n-1, one, two, three);
+	move(n, one, two);
+	hanoi(n-1, three, two, one);
+}
+
 
 // タワーの中身を見る
 void show(char type, int tree[]){
 	printf("\n %c ", type);
 	int i;
-	for(i = 1; i <= SIZE; i++){
+	for(i = 0; i < SIZE; i++){
 		printf("%d", tree[i]);	
 	}	
 }
 
-int main(void){
-{
-	// 初期化
-	init();
-	int s = SIZE;
-	
-	
-	h(&s);
-	
-	// 結果表示
+void allshow(){
 	show('A', tree1);
 	show('B', tree2);
 	show('C', tree3);
+}
+
+int main(void){
+	// 初期化
+	init();
+	
+	hanoi(SIZE, tree1, tree2, tree3);
+	
+	int i;
+	for(i = 0; i < SIZE * 100000000; i++){
+		
+	}
+	
+	// 結果表示
+	allshow();
 	
 	return 0;
 }
-*/
