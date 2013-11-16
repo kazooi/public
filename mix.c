@@ -15,7 +15,7 @@ void Draw(FILE* file1, FILE* file2){
 	int c;
 	
 	int i;
-	for(i = 0; i < c != EOF; i++){
+	for(i = 0; c != EOF; i++){
 		if(c == EOF) break;
 		if(i % 2 == 0){
 			c = fgetc( file1 );
