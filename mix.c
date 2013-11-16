@@ -36,8 +36,8 @@ void Draw(FILE* file1, FILE* file2){
 int main(void){
 	
 	FILE *file1, *file2;	// テキストファイル
-	char *a = "a.txt";	// テキストファイル名
-	char *b = "b.txt";	// テキストファイル名
+	char *a = "a.txt";
+	char *b = "b.txt";
 	
 	file1 = FileOpen(a);
 	file2 = FileOpen(b);
