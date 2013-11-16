@@ -18,12 +18,11 @@ void Draw(FILE* file1, FILE* file2){
 
 	char str1[MAX], str2[MAX];
 	
-	int i;
-	
 	while( fgets( str1, MAX, file1 ) != NULL  && fgets( str2, MAX, file2 ) != NULL){
 		printf("%s", str1);
 		printf("%s", str2);
 	}
+	
 	fclose(file1);
 	fclose(file2);	
 }
