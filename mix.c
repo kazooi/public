@@ -43,6 +43,6 @@ int main(void){
 	file2 = FileOpen(b);
 	
 	Draw(file1, file2);
-	
+
 	return 0;
 }
