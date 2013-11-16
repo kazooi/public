@@ -4,39 +4,38 @@
 #define MAX 1024
 
 FILE* FileOpen(char* fileName){
-	FILE *file;
+	FILE *fp;
 	// ファイルの読み込み
-	file = fopen( fileName, "r" );
-	if( file == NULL ){
-		printf("file error ");
-	}
-	// assert(file != NULL);
-	return file;
+	fp = fopen( fileName, "r" );
+	
+	assert(fp != NULL);
+	return fp;
 }
 
-void Draw(FILE* file1, FILE* file2){
+void Draw(FILE* fp1, FILE* fp2){
 
 	char str1[MAX], str2[MAX];
 	
-	while( fgets( str1, MAX, file1 ) != NULL  && fgets( str2, MAX, file2 ) != NULL){
+	while( fgets( str1, MAX, fp1 ) != NULL  && fgets( str2, MAX, fp2 ) != NULL){
 		printf("%s", str1);
 		printf("%s", str2);
 	}
 	
-	fclose(file1);
-	fclose(file2);	
+	fclose(fp1);
+	fclose(fp2);	
 }
 
-int main(void){
+int main(int argc, char* argv[]){
 	
-	FILE *file1, *file2;	// テキストファイル
-	char *a = "a.txt";
-	char *b = "b.txt";
 	
-	file1 = FileOpen(a);
-	file2 = FileOpen(b);
+	FILE *fp1, *fp2;	// テキストファイル
 	
-	Draw(file1, file2);
+	assert(argc == 3);
+	
+	fp1 = FileOpen(argv[1]);
+	fp2 = FileOpen(argv[2]);
+	
+	Draw(fp1, fp2);
 
 	return 0;
 }
