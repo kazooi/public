@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <assert.h>
+
+#define MAX 1024
 
 FILE* FileOpen(char* fileName){
 	FILE *file;
@@ -7,27 +10,19 @@ FILE* FileOpen(char* fileName){
 	if( file == NULL ){
 		printf("file error ");
 	}
+	// assert(file != NULL);
 	return file;
 }
 
 void Draw(FILE* file1, FILE* file2){
 
-	int c = 0;
+	char str1[MAX], str2[MAX];
 	
 	int i;
-	for(i = 0; c != EOF; i++){
-		if(i % 2 == 0){
-			c = fgetc( file1 );
-			if(c == '\n' || c == EOF) continue;
-			printf("%c\n", c);	
-		}
-		
-		if(i % 2 == 1){
-			c = fgetc( file2 );
-			if(c == '\n') continue;
-			printf("%c", c);
-		}	
-		if(c == EOF) break;
+	
+	while( fgets( str1, MAX, file1 ) != NULL  && fgets( str2, MAX, file2 ) != NULL){
+		printf("%s", str1);
+		printf("%s", str2);
 	}
 	fclose(file1);
 	fclose(file2);	
