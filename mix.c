@@ -8,7 +8,10 @@ FILE* FileOpen(char* fileName){
 	// ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
 	fp = fopen( fileName, "r" );
 	
-	assert(fp != NULL);
+	if(fp == NULL){
+		fprintf(stderr, "file error\n");
+		assert(fp != NULL);
+	}
 	return fp;
 }
 
