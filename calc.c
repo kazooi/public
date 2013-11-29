@@ -36,9 +36,7 @@ void Calc(FILE* fp){
 	int count = 0, total = 0, add = 0;
 	int c = 0;
 	int s[MAX];
-	int keep = 0;
-	bool flag;
-	flag = true;
+	bool flag = true;
 	
 	while( (c = fgetc( fp )) != EOF ){
 		switch(c){
