@@ -16,19 +16,6 @@ FILE* FileOpen(char* fileName){
         return fp;
 }
 
-void Draw(FILE* fp1, FILE* fp2){
-
-        char str1[MAX], str2[MAX];
-        
-        while( fgets( str1, MAX, fp1 ) != NULL  && fgets( str2, MAX, fp2 ) != NULL){
-                printf("%s", str1);
-                printf("%s", str2);
-        }
-        
-        fclose(fp1);
-        fclose(fp2);        
-}
-
 // 読み込んだファイいるの計算
 void Calc(FILE* fp){
         
@@ -72,6 +59,7 @@ void Calc(FILE* fp){
                         add = 0;
 			continue;
 		}
+		//　yuniko-do
 		s[count] = c - 48;
                 count++;
 	}
@@ -80,7 +68,7 @@ void Calc(FILE* fp){
 int main(int argc, char* argv[]){
         
         
-        FILE *fp1, *fp2;        // テキストファイル
+        FILE *fp1;        // テキストファイル
         
         //assert(argc == 3);
         
