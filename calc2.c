@@ -20,7 +20,7 @@ FILE* FileOpen(char* fileName){
 void Calc(FILE* fp){
         
         int i, j;
-        int count = 0, total = 0, add = 0;
+        int count = 0, total = 0;
         int c = 0;
         int s[MAX];
         bool flag = true;
@@ -30,33 +30,32 @@ void Calc(FILE* fp){
 		printf("%c", c);
 		if(c == '+' || c == '-' || c == '='){
 			
-			add = count;
-			for(i = 0; i < add; i++){
-                		for(j = 1; j < count; j++){
+			for(i = 0; i < count; i++){
+                		for(j = i + 1; j < count; j++){
                                 	s[i] *= 10;
                         	}
                         	count--;
                 	}
                         
                 	if(flag){
-                        	for(i = 0; i < add; i++){
+                        	for(i = 0; i < count; i++){
                                 	total += s[i];
                         	}
                 	}else{        
-                        	for(i = 0; i < add; i++){
+                        	for(i = 0; i < count; i++){
                                 	total -= s[i];
                         	}
                 	}
+                	
 			flag = true;
 			if(c == '-'){
 				flag = false;
 			}
 			if(c == '='){
 				printf("%d \n", total);
-				return;
+				continue;
 			}
 			count = 0;
-                        add = 0;
 			continue;
 		}
 		//　yuniko-do
