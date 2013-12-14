@@ -34,7 +34,6 @@ void Calc(FILE* fp){
                 		for(j = i + 1; j < count; j++){
                                 	s[i] *= 10;
                         	}
-                        	count--;
                 	}
                         
                 	if(flag){
