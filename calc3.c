@@ -6,21 +6,16 @@ enum TokType
 {
 	OpPlus,	OpMinus, OpEqual,
 	Number,
+	
+	EndOfFile,
 };
 
-int main()
+int gettok(char *buf, int bufsiz)
 {
-	
+	//‚±‚±‚É‘‚¢‚Ä‚­‚¾‚³‚¢	
 	int c;
-	FILE *fp;
-	fp = fopen("b.txt", "r");
-	if(fp == NULL)
-	{
-		printf("file error");
-		return 1;
-	}
 	int count = 0;
-	while((c = getc(fp)) != EOF)
+	while((c = getchar()) != EOF)
 	{
 		if(isspace(c))
 		{
@@ -30,19 +25,30 @@ int main()
 		{
 			putchar(c);
 			
-			// •¶š‚ğ®”‚É•Ï‚¦‚éŠÖ”
-		//	atoi(c);
 			break;
 		}else if(isdigit(c)){
 			do{
 				putchar(c);
-				
+				buf[count] = c;
+				count++;
 				break;
-			}while((c = getc(fp)) != EOF && isdigit(c));
+			}while(isdigit(c));
 			
 		}else{
 			fprintf(stderr, "invalid char '%c'\n", c);
 		}
 	}
+	return EndOfFile;
+}
+
+int main()
+{
+	enum TokType tok;
+	char buf[100];
+	
+	while((tok = gettok(buf, sizeof(buf))) != EndOfFile){
+		printf("tok = %d; buf = [%s]\n", tok, buf);
+	}
+	
 	return 0;
 }
