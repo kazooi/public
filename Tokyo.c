@@ -7,7 +7,7 @@ int inword = 0;
 int main(){	
 	while((c = fgetc(stdin)) != EOF){
 		
-		// スペースはコンティニュー
+		// スペース タブ 改行 で次の単語に移行
 		if(c == '\t' || c == '\n' || c == ' '){
 			if(inword){
 				printf("]\n");
@@ -16,6 +16,7 @@ int main(){
 			continue;
 		}
 		
+		// 最初の一回だけ
 		if(!inword){
 			putchar('[');
 		}
